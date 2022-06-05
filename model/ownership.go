@@ -1,5 +1,6 @@
 package model
 
 type Ownership struct {
-	RealEstates []int
+	RealEstates []*RealEstate
+	Estates     []*Estate
 }

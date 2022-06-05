@@ -2,16 +2,16 @@ package model
 
 import "errors"
 
-type RealEstate struct {
-	Id           int
-	Name         string
-	OwnerId      int
-	Type         string
-	Cost         float64
-	UtilityBills int
+type Estate struct {
+	Id      int
+	Name    string
+	OwnerId int
+	Type    string
+	Cost    float64
+	LoanId  int
 }
 
-func (r *RealEstate) Trade(seller *Person, byuer *Person, cost float64) error {
+func (e *Estate) Trade(seller *Person, byuer *Person, cost float64) error {
 
 	// check if byuer have enough money
 	if byuer.Currency < cost {
@@ -19,9 +19,9 @@ func (r *RealEstate) Trade(seller *Person, byuer *Person, cost float64) error {
 	}
 	// check if seller own estate and delete it from gis ownership
 	ok := false
-	for i, o := range seller.Ownership.RealEstates {
+	for i, o := range seller.Ownership.Estates {
 
-		if o == r {
+		if o == e {
 			ok = true
 			seller.Ownership.RealEstates = append(seller.Ownership.RealEstates[:i], seller.Ownership.RealEstates[i+1:]...)
 		}
@@ -32,11 +32,20 @@ func (r *RealEstate) Trade(seller *Person, byuer *Person, cost float64) error {
 
 	// finish the deal
 
-	byuer.Ownership.RealEstates = append(byuer.Ownership.RealEstates, r)
+	byuer.Ownership.Estates = append(byuer.Ownership.Estates, e)
 	byuer.Currency -= cost
 	seller.Currency += cost
-	r.Cost = cost
+	e.Cost = cost
 	//check if
 
 	return nil
 }
+
+// func (e *Estate) LoanTrade(seller *Person, byuer *Person, loan *Loan) error {
+
+// 	//check if seller own estate
+
+// 	if loan.LenderId
+
+// 	return nil
+// }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"ks/model"
+	"time"
 )
 
 func main() {
@@ -18,12 +19,27 @@ func main() {
 	petya.Currency = 120
 
 	est1.OwnerId = vasya.Id
-	vasya.Ownership.RealEstates = append(vasya.Ownership.RealEstates, est1.Id)
+	vasya.Ownership.RealEstates = append(vasya.Ownership.RealEstates, est1)
 
-	fmt.Println(vasya, petya, est1)
+	// fmt.Println(vasya, petya, est1)
 
-	err := est1.Trade(vasya, petya, 110)
-	fmt.Println(err)
-	fmt.Println(vasya, petya, est1)
+	// err := est1.Trade(vasya, petya, 110)
+	// fmt.Println(err)
+	// fmt.Println(vasya, petya, est1)
+	loan := new(model.Loan)
+	fmt.Println(loan)
+	loan.Create(vasya, 1000, 365, 11005)
+	loan.AttachMoney(petya)
+	for true {
+
+		fmt.Println(loan, vasya.Currency, petya.Currency, petya.Debth)
+		for _, l := range petya.Loans {
+			l.Pay()
+		}
+		for _, d := range petya.Debth {
+			fmt.Println(d)
+		}
+		time.Sleep(1 * time.Second)
+	}
 
 }
