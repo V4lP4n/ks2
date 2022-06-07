@@ -1,8 +1,8 @@
 package model
 
 type Debt struct {
-	Lender       *Person
-	Borrower     *Person
+	Lender       Dealer
+	Borrower     Dealer
 	Id           int
 	Amount       float64
 	Percent      int
@@ -10,12 +10,11 @@ type Debt struct {
 
 }
 
-func (d *Debt) Create(amount float64, percent int, Lender *Person, debtor *Person) {
+func (d *Debt) Create(amount float64, percent int, Lender Dealer, debtor Dealer) {
 	d.Amount = amount
 	d.Percent = percent
 	d.Borrower = debtor
 	d.Lender = Lender
 	d.DailyPercent = float64(percent) / 365
-	d.Borrower.Debth = append(d.Borrower.Debth, d)
-	d.Lender.OwnDebts = append(d.Lender.OwnDebts, d)
+
 }

@@ -13,13 +13,22 @@ type Person struct {
 
 	//assets
 	Currency float64
-	Lendings []*Loan
-	Loans    []*Loan
-	OwnDebts []*Debt
-	Debth    []*Debt
-	Estates  []*Estate
+	// Lendings []*Loan
+	// Loans    []*Loan
+	// OwnDebts []*Debt
+	// Debth    []*Debt
 }
 
-func (p *Person) MakeDeal(estate *Estate) {
+func (p *Person) CreateDeal(estate *Estate) {
 
+}
+func (p *Person) ReturnId() int {
+
+	return p.Id
+}
+func (p *Person) ConfirmCurrency(cost float64) bool {
+	return p.Currency >= cost
+}
+func (p *Person) UpdateCurrency(sum float64) {
+	p.Currency += sum
 }

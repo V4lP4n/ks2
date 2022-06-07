@@ -2,5 +2,8 @@ package model
 
 type Entity interface{}
 type Dealer interface {
-	MakeDeal(*Estate)
+	CreateDeal(*Estate)
+	ReturnId() int
+	ConfirmCurrency(float64) bool
+	UpdateCurrency(float64)
 }
