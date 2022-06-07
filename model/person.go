@@ -3,15 +3,10 @@ package model
 type Person struct {
 	//Basics
 	Id         int
-	FirstName  string
-	SecondName string
-	Ownership  Ownership
-	//Career
-	Qualification Qualification
-	JobId         int
-
+	Name       string
+	Experience int
 	// psyhic
-	Happyness int8
+	Happiness int8
 	Greed     int8
 	Tocxity   int8
 	Courage   int8
@@ -22,4 +17,5 @@ type Person struct {
 	Loans    []*Loan
 	OwnDebts []*Debt
 	Debth    []*Debt
+	Estates  []*Estate
 }

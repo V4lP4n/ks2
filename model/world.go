@@ -1,9 +1,8 @@
 package model
 
 type World struct {
-	Companies  []Company
-	Persons    []Person
-	RealEstate []RealEstate
+	Companies []Company
+	Persons   []Person
 }
 
 func (World) Create() {

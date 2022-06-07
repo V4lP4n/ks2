@@ -3,12 +3,13 @@ package model
 import "errors"
 
 type Estate struct {
-	Id      int
-	Name    string
-	OwnerId int
-	Type    string
-	Cost    float64
-	LoanId  int
+	Id        int
+	Title     string
+	OwnerId   int
+	CompanyId int
+	Type      string
+	Cost      float64
+	LoanId    int
 }
 
 func (e *Estate) Trade(seller *Person, byuer *Person, cost float64) error {
@@ -19,11 +20,11 @@ func (e *Estate) Trade(seller *Person, byuer *Person, cost float64) error {
 	}
 	// check if seller own estate and delete it from gis ownership
 	ok := false
-	for i, o := range seller.Ownership.Estates {
+	for i, o := range seller.Estates {
 
 		if o == e {
 			ok = true
-			seller.Ownership.RealEstates = append(seller.Ownership.RealEstates[:i], seller.Ownership.RealEstates[i+1:]...)
+			seller.Estates = append(seller.Estates[:i], seller.Estates[i+1:]...)
 		}
 	}
 	if !ok {
@@ -32,7 +33,7 @@ func (e *Estate) Trade(seller *Person, byuer *Person, cost float64) error {
 
 	// finish the deal
 
-	byuer.Ownership.Estates = append(byuer.Ownership.Estates, e)
+	byuer.Estates = append(byuer.Estates, e)
 	byuer.Currency -= cost
 	seller.Currency += cost
 	e.Cost = cost

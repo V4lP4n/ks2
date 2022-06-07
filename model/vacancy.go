@@ -1,8 +1,10 @@
 package model
 
 type Vacancy struct {
-	Name          string
-	Salary        int
-	Qualification Qualification
-	Id            int
+	Id          int
+	Title       string
+	Salary      float64
+	CompanyId   int
+	EducationId int
+	Status      bool
 }

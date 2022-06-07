@@ -1,6 +1,7 @@
 package model
 
 type Education struct {
-	Name  string
+	Id    int
+	Title string
 	Grade string
 }
