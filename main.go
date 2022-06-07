@@ -11,7 +11,9 @@ func main() {
 	est1.Id = 123
 
 	vasya := new(model.Person)
+	vasya.Name = "vasya"
 	petya := new(model.Person)
+	petya.Name = "petya"
 	vasya.Id = 1
 	vasya.Currency = 7
 	petya.Id = 2
@@ -19,7 +21,7 @@ func main() {
 
 	est1.Owner = vasya
 
-	fmt.Println(vasya, petya, est1)
+	fmt.Println(vasya, petya, est1.Owner)
 
 	// // err := est1.Trade(vasya, petya, 110)
 	// // fmt.Println(err)
