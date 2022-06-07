@@ -3,13 +3,12 @@ package model
 import "errors"
 
 type Estate struct {
-	Id        int
-	Title     string
-	OwnerId   int
-	CompanyId int
-	Type      string
-	Cost      float64
-	LoanId    int
+	Id    int
+	Title string
+	Owner Dealer
+	Type  string
+	Cost  float64
+	Loan  *Loan
 }
 
 func (e *Estate) Trade(seller *Person, byuer *Person, cost float64) error {

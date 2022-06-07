@@ -71,7 +71,7 @@ func (l *Loan) Pay() error {
 		if len(l.Estate) != 0 {
 			// if do confiscate it and close Loan
 			for _, e := range l.Estate {
-				e.OwnerId = l.Lender.Id
+				e.Owner = l.Lender
 				l.Lender.Estates = append(l.Lender.Estates, e)
 			}
 			l.Close()

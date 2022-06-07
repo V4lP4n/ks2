@@ -19,3 +19,7 @@ type Person struct {
 	Debth    []*Debt
 	Estates  []*Estate
 }
+
+func (p *Person) MakeDeal(estate *Estate) {
+
+}
