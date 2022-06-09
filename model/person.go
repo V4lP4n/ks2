@@ -10,7 +10,7 @@ type Person struct {
 	Greed     int8
 	Tocxity   int8
 	Courage   int8
-
+	User      *User
 	//assets
 	Currency float64
 	// Lendings []*Loan
@@ -31,4 +31,8 @@ func (p *Person) ConfirmCurrency(cost float64) bool {
 }
 func (p *Person) UpdateCurrency(sum float64) {
 	p.Currency += sum
+}
+
+func (p *Person) Type() string {
+	return "person"
 }

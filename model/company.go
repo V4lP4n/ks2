@@ -20,3 +20,7 @@ func (c *Company) ConfirmCurrency(cost float64) bool {
 func (c *Company) UpdateCurrency(sum float64) {
 	c.Currency += sum
 }
+
+func (c *Company) Type() string {
+	return "company"
+}

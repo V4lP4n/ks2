@@ -6,4 +6,6 @@ type Dealer interface {
 	ReturnId() int
 	ConfirmCurrency(float64) bool
 	UpdateCurrency(float64)
+
+	Type() string
 }

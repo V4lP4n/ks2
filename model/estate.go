@@ -23,6 +23,7 @@ func (e *Estate) Trade(seller Dealer, byuer Dealer, cost float64) error {
 	}
 	// finish the deal
 	e.Owner = byuer
+
 	byuer.UpdateCurrency(-cost)
 	seller.UpdateCurrency(cost)
 	e.Cost = cost
