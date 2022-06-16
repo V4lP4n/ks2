@@ -1,0 +1,28 @@
+<script>
+// document.querySelector(".send").addEventListener('click',()=>{
+//     document.querySelector(".auth_form")
+// })
+window.onload = function(){
+    // alert("load")
+document.querySelector(".send").onclick = async(e)=>{
+    e.preventDefault()
+
+    let res = await fetch('http://localhost:3333/auth', {
+        method: 'POST',
+        body: JSON.stringify({name:"qwe", password:"qwe"})
+        
+    })
+    console.log(JSON.stringify("id:123, name:qwe, password:ewq"))
+
+}
+}
+</script>
+<form action="#" class="auth_form">
+    <label for="username">Имя <em>*</em></label>
+    <input id="username"><br>
+
+    <label for="password">Password <em>*</em></label>
+    <input id="password"><br>
+    <p><input type="submit" value="send" class="send"></p>
+
+</form>

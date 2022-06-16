@@ -9,15 +9,28 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func HomeHandler(res http.ResponseWriter, req *http.Request) {
-	fmt.Println(res, req)
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(w, r)
+	w.Write([]byte{'q'})
+
 }
 
 func RunServer() {
 	r := mux.NewRouter()
+
+	// files := http.FileServer(http.Dir("../static"))
+	// r.Handle("/static", files)
+	r.PathPrefix("/static").Handler(http.StripPrefix("/static",
+		http.FileServer(http.Dir("./"+"static/"))))
+
 	r.HandleFunc("/", HomeHandler)
-	http.Handle("/", r)
+	r.HandleFunc("/auth", JWT)
+	r.HandleFunc("/welcome", Welcome)
+
+	// http.Handle("/", r)
+
 	srv := &http.Server{
+
 		Handler:      r,
 		Addr:         "127.0.0.1:3333",
 		WriteTimeout: 15 * time.Second,
