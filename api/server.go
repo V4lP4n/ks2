@@ -18,12 +18,12 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 func RunServer() {
 	r := mux.NewRouter()
 
-	// files := http.FileServer(http.Dir("../static"))
-	// r.Handle("/static", files)
 	r.PathPrefix("/static").Handler(http.StripPrefix("/static",
 		http.FileServer(http.Dir("./"+"static/"))))
 
-	r.HandleFunc("/", HomeHandler)
+	r.PathPrefix("/").Handler(http.StripPrefix("/",
+		http.FileServer(http.Dir("./"+"static/"))))
+	//r.HandleFunc("/", HomeHandler)
 	r.HandleFunc("/auth", JWT)
 	r.HandleFunc("/welcome", Welcome)
 

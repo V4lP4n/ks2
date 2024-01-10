@@ -16,6 +16,7 @@ func FindUser(uname, pwd string) bool {
 	and password = "` + pwd + `"`)
 	if err != nil {
 		fmt.Println(err)
+		fmt.Println("from db_auth")
 	}
 
 	return result.Next()
@@ -30,6 +31,7 @@ func GetPwd(uname string) (string, error) {
 	Select password from user where name = "` + uname + `"`)
 	if err != nil {
 		fmt.Println(err)
+		fmt.Println("from db_auth")
 	}
 	if result.Next() {
 		var pwd string
@@ -49,6 +51,7 @@ func GetId(uname string) (int, error) {
 	Select id from user where name = "` + uname + `"`)
 	if err != nil {
 		fmt.Println(err)
+		fmt.Println("from db_auth")
 	}
 	if result.Next() {
 		var pwd string
