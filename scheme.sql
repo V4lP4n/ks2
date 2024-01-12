@@ -103,3 +103,12 @@ CREATE TABLE IF NOT EXISTS loan (
     FOREIGN KEY(lender_id) REFERENCES person(id) ON DELETE RESTRICT,
     FOREIGN KEY(borrower_id) REFERENCES person(id) ON DELETE RESTRICT
 );
+
+
+
+CREATE TABLE IF NOT EXISTS settings (
+    id INTEGER PRIMARY key,
+    owner_id int,
+    bg_color VARCHAR,
+    FOREIGN KEY(owner_id) REFERENCES user(id) ON DELETE RESTRICT
+);

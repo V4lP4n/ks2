@@ -9,3 +9,7 @@ type Dealer interface {
 
 	Type() string
 }
+
+type Initer interface {
+	Init()
+}
